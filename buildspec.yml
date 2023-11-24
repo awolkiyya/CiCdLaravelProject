@@ -17,17 +17,17 @@ phases:
       - php artisan key:generate
   build:
     commands:
-      - npm run production
+      - echo "Installing dependencies for frontend..."
+      - npm install
       - php artisan migrate --force
       - php artisan db:seed
       - php artisan cache:clear
       - php artisan optimize
-      - echo "Installing dependencies for frontend..."
-      - npm install
+      - npm run production
   post_build:
     commands:
       - echo "Running tests..."
-      - phpunit tests/
+      - phpunit --color=auto
       - echo "Generating deployment artifact..."
 artifacts:
   files:
