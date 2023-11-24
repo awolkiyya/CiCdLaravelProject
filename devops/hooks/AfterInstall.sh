@@ -1,4 +1,5 @@
 #!/bin/bash
+# Authore
 # Project directory on server for your project.
 WEB_DIR="/var/www/html/CiCdLaravelProject"
 # Your server user. Used to fix permission issue & install our project dependcies
