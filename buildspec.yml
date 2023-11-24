@@ -5,7 +5,6 @@ runtime-versions:
 phases:
   install:
     commands:
-      - apt-get -y install php8.1
       - apt-get update -y
       - apt-get install -y libpq-dev libzip-dev
       - apt-get install -y php-pgsql
