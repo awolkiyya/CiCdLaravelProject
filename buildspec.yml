@@ -32,8 +32,8 @@ phases:
 artifacts:
   files:
     - "**/*"
-   name: $(date +%Y-%m-%dT%H:%M:%S).zip
-  
+  name: $(date +%Y-%m-%dT%H:%M:%S).zip
+
 proxy:
   upload-artifacts: yes
   logs: yes
