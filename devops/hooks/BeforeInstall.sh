@@ -1,6 +1,6 @@
 #!/bin/bash
 # Exit on error
-set -o errexit -o pipefail
+# set -o errexit -o pipefail
 sudo apt update -y
 sudo apt dist-upgrade -y
 sudo apt -y install apache2
