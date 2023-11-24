@@ -6,10 +6,12 @@ phases:
   install:
     commands:
       - apt-get update -y
-      - apt-get install -y libpq-dev libzip-dev
-      - apt-get install -y php-pgsql
+      - echo Installing PHP 8.1...
       - curl -sS https://getcomposer.org/installer | php
       - mv composer.phar /usr/local/bin/composer
+      - composer install --no-suggest
+      - echo Checking PHP version...
+      - php -v
   pre_build:
     commands:
       - composer install --no-interaction
@@ -17,13 +19,12 @@ phases:
       - php artisan key:generate
   build:
     commands:
-      - echo "Installing dependencies for frontend..."
-      - npm install
-      - php artisan migrate --force
-      - php artisan db:seed
+      - echo Build started on `date`
+      - php artisan migrate
       - php artisan cache:clear
       - php artisan optimize
-      - npm run production
+      - echo "Installing dependencies for frontend..."
+      - npm install
   post_build:
     commands:
       - echo "Running tests..."
