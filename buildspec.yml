@@ -12,6 +12,7 @@ phases:
       - composer install --no-suggest
       - echo Checking PHP version...
       - php -v
+      - composer require phpunit/phpunit
       - phpunit --version
   pre_build:
     commands:
