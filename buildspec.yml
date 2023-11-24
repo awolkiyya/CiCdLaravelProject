@@ -12,6 +12,7 @@ phases:
       - composer install --no-suggest
       - echo Checking PHP version...
       - php -v
+      - phpunit --version
   pre_build:
     commands:
       - composer install --no-interaction
@@ -20,7 +21,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - php artisan migrate
+      # - php artisan migrate
       - php artisan cache:clear
       - php artisan optimize
       - echo "Installing dependencies for frontend..."
