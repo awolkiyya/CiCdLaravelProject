@@ -9,7 +9,6 @@ phases:
       - echo Installing PHP 8.1...
       - curl -sS https://getcomposer.org/installer | php
       - mv composer.phar /usr/local/bin/composer
-      - composer install --no-suggest
       - echo Checking PHP version...
       - php -v
       - composer require phpunit/phpunit
