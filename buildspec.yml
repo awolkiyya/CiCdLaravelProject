@@ -1,0 +1,37 @@
+#!/bat/bash
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      php: 8.1
+    commands:
+      - apt-get update -y
+      - apt-get install -y libpq-dev libzip-dev
+      - apt-get install -y php-pgsql
+      - curl -sS <https://getcomposer.org/installer> | php -- --install-dir=/usr/local/bin --filename=composer
+  pre_build:
+    commands:
+      - composer install --no-interaction
+      - cp .env.example .env
+      - php artisan key:generate
+  build:
+    commands:
+      - npm run production
+      - php artisan migrate --force
+      - php artisan db:seed
+      - php artisan cache:clear
+      - php artisan optimize
+      - echo "Installing dependencies for frontend..."
+      - npm install
+  post_build:
+    commands:
+      - echo "Running tests..."
+      - phpunit tests/
+      - echo "Generating deployment artifact..."
+artifacts:
+  files:
+    - "**/*"
+  name: $(date +%Y-%m-%dT%H:%M:%S).zip
+proxy:
+  upload-artifacts: yes
+  logs: yes
