@@ -28,7 +28,7 @@ phases:
   post_build:
     commands:
       - echo "Running tests..."
-      - phpunit --color=auto
+      - ./vendor/bin/phpunit
       - echo "Generating deployment artifact..."
 artifacts:
   files:
