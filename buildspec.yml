@@ -5,10 +5,12 @@ runtime-versions:
 phases:
   install:
     commands:
+      - apt-get -y install php8.1
       - apt-get update -y
       - apt-get install -y libpq-dev libzip-dev
       - apt-get install -y php-pgsql
-      - curl -sS <https://getcomposer.org/installer> | php -- --install-dir=/usr/local/bin --filename=composer
+      - curl -sS https://getcomposer.org/installer | php
+      - mv composer.phar /usr/local/bin/composer
   pre_build:
     commands:
       - composer install --no-interaction
