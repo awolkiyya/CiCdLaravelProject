@@ -1,0 +1,22 @@
+#!/bat/bash
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/CiCdLaravelProject
+hooks:
+  BeforeInstall:
+    - location: ./devops/hooks/BeforeInstall.sh
+    - runas: root
+  AfterInstall:
+    - location: ./devops/hooks/AfterInstall.sh
+    - runas: root
+  # ApplicationStart:
+  #   - location: ./devops/hooks/ApplicationStart.sh
+  #   - runas: ubuntu
+  # ApplicationStop:
+  #   - location: ./devops/hooks/ApplicationStop.sh
+  #   - runas: ubuntu
+  # ValidateService:
+  #   - location: ./devops/hooks/ValidateService.sh
+  #   -runas: ubuntu

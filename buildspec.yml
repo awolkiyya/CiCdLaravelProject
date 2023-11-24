@@ -20,7 +20,6 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      # - php artisan migrate
       - php artisan cache:clear
       - php artisan optimize
       - echo "Installing dependencies for frontend..."
