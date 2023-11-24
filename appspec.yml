@@ -1,4 +1,3 @@
-#!/bat/bash
 version: 0.0
 os: linux
 files:
@@ -7,16 +6,4 @@ files:
 hooks:
   AfterInstall:
     - location: ./devops/hooks/AfterInstall.sh
-    - runas: root
-  # ApplicationStart:
-  #   - location: ./devops/hooks/ApplicationStart.sh
-  #   - runas: ubuntu
-  # ApplicationStop:
-  #   - location: ./devops/hooks/ApplicationStop.sh
-  #   - runas: ubuntu
-  # ValidateService:
-  #   - location: ./devops/hooks/ValidateService.sh
-  #   -runas: ubuntu
-  #  BeforeInstall:
-  #   - location: ./devops/hooks/BeforeInstall.sh
-  #   - runas: root
+    - runas: ubuntu

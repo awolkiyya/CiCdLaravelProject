@@ -1,7 +1,4 @@
 #!/bin/bash
-# Exit on error
-set -o errexit -o pipefail
-sudo -s
 sudo apt update -y
 sudo apt dist-upgrade -y
 sudo apt -y install apache2
@@ -29,6 +26,8 @@ fi
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
+rm -rf ./aws
+rm -f awscliv2.zip
 # Set the site configuration parameters
 echo "<VirtualHost *:80>" > /etc/apache2/sites-available/testsite.conf
 echo "  ServerName www.ghioon.com" >> /etc/apache2/sites-available/testsite.conf

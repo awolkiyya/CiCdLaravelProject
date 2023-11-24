@@ -6,7 +6,6 @@
 # aws paramater store name & region
 PARAMATER="laraveldevops_env"
 REGION="us-east-1"
-WEB_USER="ubuntu"
 # Get parameters and put it into .env file inside application root
 aws ssm get-parameter \
   --with-decryption \
