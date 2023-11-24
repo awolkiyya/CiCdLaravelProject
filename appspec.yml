@@ -5,9 +5,6 @@ files:
   - source: /
     destination: /var/www/html/CiCdLaravelProject
 hooks:
-  BeforeInstall:
-    - location: ./devops/hooks/BeforeInstall.sh
-    - runas: root
   AfterInstall:
     - location: ./devops/hooks/AfterInstall.sh
     - runas: root
@@ -20,3 +17,6 @@ hooks:
   # ValidateService:
   #   - location: ./devops/hooks/ValidateService.sh
   #   -runas: ubuntu
+  #  BeforeInstall:
+  #   - location: ./devops/hooks/BeforeInstall.sh
+  #   - runas: root
