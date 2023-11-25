@@ -6,4 +6,4 @@ files:
 hooks:
   AfterInstall:
     - location: ./devops/hooks/AfterInstall.sh
-    - runas: ubuntu
+    - runas: root
