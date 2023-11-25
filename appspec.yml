@@ -5,5 +5,5 @@ files:
     destination: /var/www/html/CiCdLaravelProject
 hooks:
   AfterInstall:
-    - location: ./devops/hooks/AfterInstall.sh
+    - location: devops/hooks/AfterInstall.sh
     - runas: root
