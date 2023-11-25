@@ -24,8 +24,21 @@ service apache2 restart
 echo "0 0 * * * certbot renew" >> /etc/crontab
 
 # load .env file from AWS Systems Manager
-./devops/scripts/generate-env.sh
+# aws paramater store name & region
+PARAMATER="laraveldevops_env"
+REGION="us-east-1"
+# Get parameters and put it into .env file inside application root
+aws ssm get-parameter \
+  --with-decryption \
+  --name $PARAMATER \
+  --region $REGION \
+  --with-decryption \
+  --query Parameter.Value \
+  --output text > $WEB_DIR/.env
 
+# Clear laravel configuration cache
+chown $WEB_USER. .env
+sudo -u $WEB_USER php artisan config:clear
 # generate app key & run migrations
 sudo -u $WEB_USER php artisan key:generate
 sudo -u $WEB_USER php artisan migrate --force --no-interaction
