@@ -5,7 +5,7 @@ files:
     destination: /var/www/html/CiCdLaravelProject
 hooks:
   BeforeInstall:
-    - location: devops/hooks/AfterInstall.sh
+    - location: devops/hooks/BeforeInstall.sh
       timeout: 300
       runas: root
   AfterInstall:
